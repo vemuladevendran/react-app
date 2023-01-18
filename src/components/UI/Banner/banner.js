@@ -1,7 +1,6 @@
 import Card from "../Card/card";
 import { data } from "../../../Data/data";
 import { useCallback, useState } from "react";
-import Button from "../Button/button";
 function Banner(params) {
   const [quesionData, setQuesionData] = useState(data);
   const [selectedQuestion, setSelectedquestion] = useState([]);
@@ -13,7 +12,6 @@ function Banner(params) {
     const data = selectedQuestion.sort((a, b) => a.questionId - b.questionId);
     const score = quesionData.filter((answer, i) => answer.answer === data[i].item);
     setCorrectanswersCount(score)
-    console.log(score, "hello results");
     setShowresults(true);
     setStartQuiz(false)
     setQuizCard(false)
@@ -21,7 +19,6 @@ function Banner(params) {
   const handleDataFromChild = useCallback(
     (questionId, item) => {
       setSelectedquestion([...selectedQuestion, { questionId, item }]);
-      console.log(selectedQuestion, "helloworld");
     },
     [selectedQuestion]
   );
